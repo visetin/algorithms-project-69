@@ -1,0 +1,50 @@
+{
+  "name": "@hexlet/code",
+  "version": "0.0.1",
+  "description": "Educational search engine",
+  "main": "src/index.js",
+  "author": "Polina Stopina",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/visetin/algorithms-project-69"
+  },
+  "bugs": {
+    "url": "https://github.com/visetin/algorithms-project-69/issues"
+  },
+  "homepage": "https://github.com/visetin/algorithms-project-69#readme",
+  "type": "module",
+  "engines": {
+    "node": ">=14"
+  },
+  "bin": {
+    "search": "bin/index.js"
+  },
+  "scripts": {
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
+  },
+  "simple-git-hooks": {
+    "pre-push": "npx lint-staged"
+  },
+  "lint-staged": {
+    "*.js": "eslint --fix"
+  },
+  "dependencies": {
+    "debug": "^4.3.5",
+    "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3.1.0",
+    "@eslint/js": "^9.7.0",
+    "@jest/globals": "^29.7.0",
+    "eslint": "^8.57.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.29.1",
+    "globals": "^15.8.0",
+    "jest": "^29.7.0",
+    "jest-cli": "^29.7.0",
+    "lint-staged": "^15.2.7",
+    "npm-check-updates": "^16.14.20",
+    "simple-git-hooks": "^2.11.1"
+  }
+}
