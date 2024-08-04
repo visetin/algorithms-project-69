@@ -27,6 +27,8 @@ describe('search by text', () => {
             { text: 'straight', result: ['doc1'] },
             { text: 'thing', result: ['doc2'] },
             { text: 'shooter', result: ['doc3'] },
+            { text: 'pint', result: ['doc1'] },
+            { text: 'pint!', result: ['doc1'] },
         ];
 
         testCases.forEach(({ text, result }) => {
