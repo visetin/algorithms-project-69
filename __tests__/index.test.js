@@ -41,7 +41,7 @@ describe('search by text', () => {
             { text: 'that thing', result: ['doc2'] },
             { text: 'your shooter', result: ['doc3'] },
             { text: 'Don\'t shoot', result: ['doc1', 'doc2'] },
-            { text: 'I can\'t', result: ['doc1', 'doc3'] }
+            { text: 'I can\'t', result: ['doc1', 'doc2', 'doc3'] }
         ];
 
         testCases.forEach(({ text, result }) => {

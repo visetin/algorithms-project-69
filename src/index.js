@@ -7,55 +7,35 @@ import _ from 'lodash';
  */
 
 /**
- * @param {string} rawWord
- * @return {string}
- */
-const normalizeWord = (rawWord) => {
-    const [word] = rawWord.match(/\w+/g);
-
-    if (!word) {
-        return '';
-    }
-
-    return word.toLowerCase();
-};
-
-/**
- * @param {string} text
+ * @param {string} token
  * @return {string[]}
  */
-const parseTextToWords = (text) => {
-    return text.split(' ')
-        .map(normalizeWord)
-        .filter((word) => { return word; });
-};
+const makeTerms = (token) => {
+    const terms = token.match(/\w+/g);
 
-/**
- * @param {string[]} haystack
- * @param {string[]} needle
- * @return {string[] | []}
- */
-const findWordsIntersection = (haystack, needle) => {
-    return _.intersection(haystack, needle);
+
+    return terms
+        .filter((term) => { return term; })
+        .map((term) => { return term.toLowerCase()})
 };
 
 /**
  * @param {SEDocument[]} docs
- * @param {string} text
+ * @param {string} token
  * @return {string[] | []}
  */
-const search = (docs, text) => {
-    if (!docs.length || !text) {
+const search = (docs, token) => {
+    if (!docs.length || !token) {
         return [];
     }
 
-    const targetWords = parseTextToWords(text);
+    const targetTerms = makeTerms(token);
 
-    return docs.reduce((acc, { id, text: docText }) => {
-        const docWords = parseTextToWords(docText);
-        const intersectionWordsMap = findWordsIntersection(docWords, targetWords);
+    return docs.reduce((acc, { id, text: docToken }) => {
+        const docTerms = makeTerms(docToken);
+        const intersectionTerms = _.intersection(docTerms, targetTerms);
 
-        return intersectionWordsMap.length ? [...acc, id] : acc;
+        return intersectionTerms.length ? [...acc, id] : acc;
     }, []);
 };
 
